@@ -17,8 +17,7 @@ struct CoinsList: View {
             List(viewModel.coinViewModels, id: \.self) { coinViewModel in
                 
                 HStack {
-                    Text(coinViewModel.name).font(.title)
-                    Text(coinViewModel.formattedPrice).font(.body)
+                    Text(coinViewModel.displayText).font(.body)
                 }
             }.onAppear{
                 viewModel.fetchCoins()

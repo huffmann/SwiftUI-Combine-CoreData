@@ -41,14 +41,25 @@ struct CoinViewModel: Hashable {
     }
     
     var formattedPrice: String {
-        // TODO: format
-        return coin.price
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        guard let price = Double(coin.price), let formattedPrice = formatter.string(from: NSNumber(value: price)) else {
+            return ""
+        }
+        return formattedPrice
+    }
+    
+    var displayText: String {
+        return "\(name) - \(formattedPrice)"
     }
     
     init(_ coin: Coin) {
         self.coin = coin
     }
 }
+
+
 struct Coin: Decodable, Hashable {
     let name: String
     let price: String 
