@@ -58,9 +58,3 @@ struct CoinViewModel: Hashable {
         self.coin = coin
     }
 }
-
-
-struct Coin: Decodable, Hashable {
-    let name: String
-    let price: String 
-}
